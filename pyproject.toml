@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stock-forecasting"
+version = "0.1.0"
+description = "A Streamlit app for stock forecasting using Prophet"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.44.0",
+    "pandas>=2.0.0",
+    "yfinance>=0.2.55",
+    "prophet>=1.1.6",
+    "plotly>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "pandas-stubs",
+]
+
+[tool.setuptools]
+packages = ["stock_forecasting"]
+package-dir = {"" = "src"}
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = []
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = "src"

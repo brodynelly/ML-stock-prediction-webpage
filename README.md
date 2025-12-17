@@ -1,89 +1,91 @@
-# AI Stock Prediction Web App
+# Stock Forecasting App
 
-![Streamlit App]((https://brodynelly-ai-stockpredictionweb-main-fmirxg.streamlit.app/))
-
-A powerful web application that uses machine learning to forecast stock prices. Built with Streamlit, Prophet, and yfinance.
-
-![App Screenshot](https://github.com/user-attachments/assets/811e77e5-5fc6-49c4-a769-971bd5098c17)
+A Streamlit application for forecasting stock prices using [Prophet](https://facebook.github.io/prophet/) and [yfinance](https://github.com/ranaroussi/yfinance).
 
 ## Features
 
-- **Real-time Stock Data**: Fetch the latest stock data from Yahoo Finance
-- **Interactive Visualizations**: Explore historical stock prices with interactive charts
-- **AI-Powered Forecasting**: Predict future stock prices using Facebook's Prophet algorithm
-- **Customizable Predictions**: Adjust the forecast period from 1 to 4 years
-- **Data Transparency**: View the raw data and forecasted values
-- **Component Analysis**: Understand trend and seasonal factors affecting stock prices
+- **Data Loading**: Fetches historical stock data (AAPL, GOOG, MSFT, GME) from Yahoo Finance.
+- **Data Visualization**: Interactive plots of historical open and close prices using Plotly.
+- **Forecasting**: Predicts future stock prices for up to 4 years using the Prophet model.
+- **Caching**: Efficient data loading with Streamlit's caching mechanism.
 
-## How It Works
+## Stack
 
-This application uses:
-- **yfinance**: To download historical stock data
-- **Prophet**: A time series forecasting model developed by Facebook Research
-- **Streamlit**: For the interactive web interface
-- **Plotly**: For creating interactive visualizations
+- **Python**: 3.10+
+- **Streamlit**: Web application framework.
+- **Prophet**: Time series forecasting.
+- **yfinance**: Market data downloader.
+- **Plotly**: Interactive graphing library.
+- **Pandas**: Data manipulation and analysis.
 
-The forecasting model analyzes historical patterns in stock prices, including:
-- Long-term trends
-- Seasonal patterns
-- Weekly cycles
-- Holiday effects
-
-## Getting Started
+## Setup
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- pip (Python package installer)
+- Python 3.10 or higher
+- pip
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/brodynelly/AI_StockPredictionWeb.git
-   cd AI_StockPredictionWeb
-   ```
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/stock-forecasting.git
+    cd stock-forecasting
+    ```
 
-2. Create and activate a virtual environment (recommended):
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
+2.  Create a virtual environment (optional but recommended):
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+    ```
 
-3. Install the required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Running the App Locally
-
-```bash
-streamlit run main.py
-```
-
-The app will open in your default web browser at `http://localhost:8501`.
+3.  Install the package in editable mode with development dependencies:
+    ```bash
+    pip install -e .[dev]
+    ```
 
 ## Usage
 
-1. Select a stock from the dropdown menu (AAPL, GOOG, MSFT, GME)
-2. Adjust the prediction period using the slider (1-4 years)
-3. View historical data and forecasted prices
-4. Explore the forecast components to understand patterns
-5. Use the "Clear cached stock data" button to refresh the data
+Run the Streamlit app:
 
-## Deployment
+```bash
+streamlit run src/stock_forecasting/app.py
+```
 
-This app can be deployed on Streamlit Cloud:
+Open your browser at `http://localhost:8501`.
 
-1. Push your code to GitHub
-2. Visit [Streamlit Cloud](https://streamlit.io/cloud)
-3. Connect your GitHub repository
-4. Deploy the app
+## Development
 
-## Troubleshooting
+### Running Tests
 
-- **Data Loading Issues**: If you encounter data loading errors, try clearing the cache using the button in the app
-- **Missing Dependencies**: Ensure all packages in requirements.txt are installed
-- **Deployment Errors**: Check that your environment has all necessary dependencies
+```bash
+pytest
+```
 
+### Linting and Formatting
 
+This project uses [Ruff](https://beta.ruff.rs/docs/) for linting and formatting.
+
+```bash
+ruff check .
+ruff format .
+```
+
+### Type Checking
+
+```bash
+mypy src
+```
+
+## Architecture
+
+The application is structured as follows:
+
+- `src/stock_forecasting/`: Source code.
+    - `app.py`: Main Streamlit application entry point.
+    - `utils.py`: Utility functions for data loading, model training, and forecasting.
+- `tests/`: Unit tests.
+
+## License
+
+MIT
